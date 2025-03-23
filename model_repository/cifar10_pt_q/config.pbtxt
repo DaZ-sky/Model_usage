@@ -1,0 +1,21 @@
+name: "cifar10_pt_q"
+ backend: "pytorch"
+ max_batch_size: 16
+ input [
+  {
+    name: "input"
+    data_type: TYPE_FP32
+    dims: [ 3, 32, 32 ]
+  }
+ ]
+ output [
+  {
+    name: "output"
+    data_type: TYPE_FP32
+    dims: [ 10 ]
+  }
+ ]
+ dynamic_batching {
+  preferred_batch_size: [ 8, 16 ]
+  max_queue_delay_microseconds: 10000
+ }
